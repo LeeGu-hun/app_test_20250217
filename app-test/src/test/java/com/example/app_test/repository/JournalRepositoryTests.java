@@ -50,46 +50,27 @@ class JournalRepositoryTests {
 
   @Test
   public void testGetListPage() {
-    PageRequest pageRequest = PageRequest.of(0, 10, Sort.by(Sort.Direction.DESC, "jno"));
-    Page<Object[]> result = journalRepository.getListPage(pageRequest, 1L);
-    for (Object[] objects : result.getContent()) {
-      System.out.println(Arrays.toString(objects));
-    }
+
   }
 
   @Test
   public void testGetListPagePhotos() {
-    PageRequest pageRequest = PageRequest.of(0, 10, Sort.by(Sort.Direction.DESC, "jno"));
-    Page<Object[]> result = journalRepository.getListPagePhotos(pageRequest, 1L);
-    for (Object[] objects : result.getContent()) {
-      System.out.println(Arrays.toString(objects));
-    }
+
   }
 
   @Test
   public void testGetListPagePhotosJPQL() {
-    PageRequest pageRequest = PageRequest.of(0, 10, Sort.by(Sort.Direction.DESC, "jno"));
-    Page<Object[]> result = journalRepository.getListPagePhotosJPQL(pageRequest, 1L);
-    for (Object[] objects : result.getContent()) {
-      System.out.println(Arrays.toString(objects));
-    }
+
   }
 
   @Test
   public void testGetMaxQuery() {
-    PageRequest pageRequest = PageRequest.of(0, 10, Sort.by(Sort.Direction.DESC, "pno"));
-    Page<Object[]> result = journalRepository.getMaxQuery(pageRequest);
-    for (Object[] objects : result.getContent()) {
-      System.out.println(Arrays.toString(objects));
-    }
+
   }
 
   @Test
   public void testGetJournalWithAll() {
-    List<Object[]> result = journalRepository.getJournalWithAll(1L);
-    for (Object[] objects : result) {
-      System.out.println(Arrays.toString(objects));
-    }
+
   }
 
 

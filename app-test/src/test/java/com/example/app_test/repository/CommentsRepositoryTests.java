@@ -44,44 +44,13 @@ class CommentsRepositoryTests {
 
   @Test
   public void testGetJournalComments() {
-    List<Comments> result = commentsRepository.findByJournal(Journal.builder().jno(1L).build());
-    result.forEach(c -> {
-      System.out.println(c.getCno());
-      System.out.println(c.getText());
-      System.out.println(c.getLikes());
-      System.out.println(c.getMembers().getEmail());
-      System.out.println("=".repeat(30));
-    });
+
   }
 
   @Transactional
   @Commit
   @Test
   public void testDeleteMembers() {
-    List<Object[]> result = journalRepository.getJournalWithAll(10l);
 
-    Journal journal = (Journal) result.get(0)[0];
-    List<Photos> photosList = new ArrayList<>();
-    result.forEach(new Consumer<Object[]>() {
-      @Override
-      public void accept(Object[] objects) {
-        photosList.add((Photos) objects[1]);
-      }
-    });
-    Members members = (Members) result.get(0)[2];
-
-    Long likes = (Long) result.get(0)[3];
-    Long commentsCnt = (Long) result.get(0)[4];
-    System.out.println(journal);
-    photosList.stream().forEach(photos -> {
-      System.out.println(photos);
-    });
-    System.out.println(members);
-    System.out.println(likes);
-    System.out.println(commentsCnt);
-
-//    commentsRepository.deleteByMembers(Members.builder().mid(2L).build());
-//    journalRepository.deleteById();
-//    membersRepository.deleteById(2L);
   }
 }
