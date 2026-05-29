@@ -2,8 +2,8 @@ package com.example.app_test.service;
 
 import com.example.app_test.dto.CommentsDTO;
 import com.example.app_test.entity.Comments;
-import com.example.app_test.entity.Journal;
 import com.example.app_test.entity.Members;
+import com.example.app_test.entity.Journal;
 
 import java.util.List;
 

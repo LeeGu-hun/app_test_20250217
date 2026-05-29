@@ -13,6 +13,8 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+
+
 public class JournalDTO {
   private Long jno;
   private String title;

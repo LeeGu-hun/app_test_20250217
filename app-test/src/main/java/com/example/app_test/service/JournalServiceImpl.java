@@ -101,6 +101,8 @@ public class JournalServiceImpl implements JournalService {
       Map<String, Object> entityMap = dtoToEntity(journalDTO);
       Journal journal = (Journal) entityMap.get("journal");
       journal.changeTitle(journalDTO.getTitle());
+      journal.changeContent(journalDTO.getContent());
+
       journalRepository.save(journal);
 
       List<Photos> newPhotosList =

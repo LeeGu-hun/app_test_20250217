@@ -1,6 +1,7 @@
 package com.example.app_test.controller;
 
 import com.example.app_test.dto.JournalDTO;
+import com.example.app_test.dto.ModifyRequest;
 import com.example.app_test.dto.PageRequestDTO;
 import com.example.app_test.service.JournalService;
 import lombok.RequiredArgsConstructor;
@@ -57,21 +58,42 @@ public class JournalController {
   }
 
   @PutMapping(value = "/modify", produces = MediaType.APPLICATION_JSON_VALUE)
-  public ResponseEntity<Map<String, String>> modify(@RequestBody JournalDTO dto,
-                                                    @RequestBody PageRequestDTO pageRequestDTO) {
+  public ResponseEntity<Map<String, String>> modify(@RequestBody ModifyRequest request) {
+
+    JournalDTO dto = request.getJournalDTO();
+    PageRequestDTO pageRequestDTO = request.getPageRequestDTO();
     log.info("modify post... dto: " + dto);
+
     journalService.modify(dto);
     typeKeywordInit(pageRequestDTO);
+
     Map<String, String> result = new HashMap<>();
     result.put("msg", dto.getJno() + " 수정");
-    result.put("jno", dto.getJno() + "");
-    result.put("page", pageRequestDTO.getPage() + "");
+    result.put("jno", String.valueOf(dto.getJno()));
+    result.put("page", String.valueOf(pageRequestDTO.getPage()));
     result.put("type", pageRequestDTO.getType());
     result.put("keyword", pageRequestDTO.getKeyword());
+
     return new ResponseEntity<>(result, HttpStatus.OK);
   }
 
-  @DeleteMapping(value = "/remove/{jno}", produces = MediaType.APPLICATION_JSON_VALUE)
+//  @PutMapping(value = "/modify", produces = MediaType.APPLICATION_JSON_VALUE)
+//  public ResponseEntity<Map<String, String>> modify(@RequestBody JournalDTO dto,
+//                                                    @RequestBody PageRequestDTO pageRequestDTO) {
+//    log.info("modify post... dto: " + dto);
+//    journalService.modify(dto);
+//    typeKeywordInit(pageRequestDTO);
+//    Map<String, String> result = new HashMap<>();
+//    result.put("msg", dto.getJno() + " 수정");
+//    result.put("jno", dto.getJno() + "");
+//    result.put("page", pageRequestDTO.getPage() + "");
+//    result.put("type", pageRequestDTO.getType());
+//    result.put("keyword", pageRequestDTO.getKeyword());
+//    return new ResponseEntity<>(result, HttpStatus.OK);
+//  }
+//
+
+  @PostMapping(value = "/remove/{jno}", produces = MediaType.APPLICATION_JSON_VALUE)
   public ResponseEntity<Map<String, String>> remove(
       @PathVariable Long jno, @RequestBody PageRequestDTO pageRequestDTO) {
 
